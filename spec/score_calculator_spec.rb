@@ -1,6 +1,7 @@
 require 'score_calculator'
 
 describe  'ScoreCalculator' do
+  include ScoreCalculator
 
   describe '#get_limits' do
 
@@ -10,7 +11,7 @@ describe  'ScoreCalculator' do
       x = 0
 
       # When
-      limits = get_limits(x, n)
+      limits = ScoreCalculator.get_limits(x, n)
 
       # Then
       expect(limits).to eq([0, 1])
@@ -22,7 +23,7 @@ describe  'ScoreCalculator' do
       x = 2
 
       # When
-      limits = get_limits(x, n)
+      limits = ScoreCalculator.get_limits(x, n)
 
       # Then
       expect(limits).to eq([1, 3])
@@ -34,7 +35,7 @@ describe  'ScoreCalculator' do
       x = 2
 
       # When
-      limits = get_limits(x, n)
+      limits = ScoreCalculator.get_limits(x, n)
 
       # Then
       expect(limits).to be == [1, 3]
@@ -51,7 +52,7 @@ describe  'ScoreCalculator' do
       coord_y = 0
 
       # When
-      score = calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 13
@@ -65,7 +66,7 @@ describe  'ScoreCalculator' do
       coord_y = 2
 
       # When
-      score = calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 6
@@ -79,7 +80,7 @@ describe  'ScoreCalculator' do
       coord_y = 0
 
       # When
-      score = calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 10
@@ -93,7 +94,7 @@ describe  'ScoreCalculator' do
       coord_y = 2
 
       # When
-      score = calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 7
@@ -107,7 +108,7 @@ describe  'ScoreCalculator' do
       coord_y = 1
 
       # When
-      score = calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 22
