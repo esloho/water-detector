@@ -29,4 +29,49 @@ describe LocationSelection do
     end
 
   end
+
+  describe '#print_top_results' do
+
+    before(:each) do
+      @top_location = LocationNode.new(0, 0, 12)
+      @node2 = LocationNode.new(1, 3, 9, @top_location)
+      @top_location.next_node = @node2
+      @node3 = LocationNode.new(2, 0, 7, @node2)
+      @node2.next_node = @node3
+    end
+
+    it 'should not print anything for t = 0' do
+      # Given
+      t = 0
+
+      # Then
+      expect { LocationSelection.print_top_locations(t, @top_location) }.to_not output.to_stdout
+    end
+
+    it 'should not print anything if empty list' do
+      # Given
+      t = 3
+
+      # Then
+      expect { LocationSelection.print_top_locations(t, nil) }.to_not output.to_stdout
+    end
+
+    it 'should print first result for t==1' do
+      # Given
+      t = 2
+      message = "(0, 0, score: 12)\n(1, 3, score: 9)\n"
+
+      # Then
+      expect { LocationSelection.print_top_locations(t, @top_location) }.to output(message).to_stdout
+    end
+
+    it 'should print until last location when t is higher than list length' do
+      # Given
+      t = 4
+      message = "(0, 0, score: 12)\n(1, 3, score: 9)\n(2, 0, score: 7)\n"
+
+      # Then
+      expect { LocationSelection.print_top_locations(t, @top_location) }.to output(message).to_stdout
+    end
+  end
 end 

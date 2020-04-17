@@ -22,7 +22,7 @@ module LocationSelection
   end
 
   def print_top_locations(t, location)
-    return unless t > 0
+    return if t == 0 || location.nil?
 
     puts "#{location.info}"
 
