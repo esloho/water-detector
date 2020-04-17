@@ -1,24 +1,23 @@
-require 'score_sorting'
+require 'location_sorting'
 
-describe  'ScoreSorting' do
-  include ScoreSorting
+describe LocationSorting do
 
-  describe '#find_previous_top' do
+  describe '#find_previous_node' do
 
     before(:each) do
-      @top_score = ScoreNode.new(0, 0, 12)
-      @node2 = ScoreNode.new(1, 3, 9, @top_score)
+      @top_score = LocationNode.new(0, 0, 12)
+      @node2 = LocationNode.new(1, 3, 9, @top_score)
       @top_score.next_node = @node2
-      @node3 = ScoreNode.new(2, 0, 7, @node2)
+      @node3 = LocationNode.new(2, 0, 7, @node2)
       @node2.next_node = @node3
     end
 
     it 'should return nil when new node has the higher score' do
       # Given
-      node = ScoreNode.new(0, 1, 19)
+      node = LocationNode.new(0, 1, 19)
 
       # When
-      previous_node = ScoreSorting.find_previous_node(node, @top_score)
+      previous_node = LocationSorting.find_previous_node(node, @top_score)
 
       # Then
       expect(previous_node).to be_nil
@@ -26,10 +25,10 @@ describe  'ScoreSorting' do
 
     it 'should return last node when new node has the lowest score' do
       # Given
-      node = ScoreNode.new(0, 1, 5)
+      node = LocationNode.new(0, 1, 5)
 
       # When
-      previous_top = ScoreSorting.find_previous_node(node, @top_score)
+      previous_top = LocationSorting.find_previous_node(node, @top_score)
 
       # Then
       expect(previous_top).to be == @node3
@@ -37,10 +36,10 @@ describe  'ScoreSorting' do
 
     it 'should return root node when new node has the second highest score' do
       # Given
-      node = ScoreNode.new(0, 1, 10)
+      node = LocationNode.new(0, 1, 10)
 
       # When
-      previous_top = ScoreSorting.find_previous_node(node, @top_score)
+      previous_top = LocationSorting.find_previous_node(node, @top_score)
 
       # Then
       expect(previous_top).to be == @top_score
@@ -48,13 +47,13 @@ describe  'ScoreSorting' do
 
   end
 
-  describe '#add_score' do
+  describe '#add_location' do
 
     before(:each) do
-      @top_score = ScoreNode.new(0, 0, 12)
-      @node2 = ScoreNode.new(1, 3, 9, @top_score)
+      @top_score = LocationNode.new(0, 0, 12)
+      @node2 = LocationNode.new(1, 3, 9, @top_score)
       @top_score.next_node = @node2
-      @node3 = ScoreNode.new(2, 0, 7, @node2)
+      @node3 = LocationNode.new(2, 0, 7, @node2)
       @node2.next_node = @node3
     end
 
@@ -65,7 +64,7 @@ describe  'ScoreSorting' do
       score = 19
 
       # When
-      root = ScoreSorting.add_score(x, y, score, @top_score)
+      root = LocationSorting.add_location(x, y, score, @top_score)
 
       # Then
       expect(root.score).to be == score
@@ -83,7 +82,7 @@ describe  'ScoreSorting' do
       score = 5
 
       # When
-      root = ScoreSorting.add_score(x, y, score, @top_score)
+      root = LocationSorting.add_location(x, y, score, @top_score)
 
       # Then
       new_node = @node3.next_node
@@ -102,7 +101,7 @@ describe  'ScoreSorting' do
       score = 10
 
       # When
-      root = ScoreSorting.add_score(x, y, score, @top_score)
+      root = LocationSorting.add_location(x, y, score, @top_score)
 
       # Then
       new_node = root.next_node

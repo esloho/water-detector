@@ -1,7 +1,7 @@
 module ScoreCalculation
   extend self
 
-  def get_cell_score(coord_x, coord_y, n, grid)
+  def get_area_score(coord_x, coord_y, n, grid)
     limits_x = get_limits(coord_x, n)
     limits_y = get_limits(coord_y, n)
 

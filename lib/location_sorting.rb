@@ -1,9 +1,9 @@
 
-module ScoreSorting
+module LocationSorting
   extend self
 
-  def add_score(x, y, score, top_score)
-    node = ScoreNode.new(x, y, score)
+  def add_location(x, y, score, top_score)
+    node = LocationNode.new(x, y, score)
 
     return node if top_score.nil?
 

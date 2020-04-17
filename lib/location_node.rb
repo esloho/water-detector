@@ -1,4 +1,4 @@
-class ScoreNode
+class LocationNode
 
   attr_reader :coord_x
   attr_reader :coord_y

@@ -1,6 +1,6 @@
-require 'score_node'
+require 'location_node'
 
-describe ScoreNode do
+describe LocationNode do
 
   describe '#initalize' do
 
@@ -11,7 +11,7 @@ describe ScoreNode do
       score = 12
 
       # When
-      node = ScoreNode.new(coord_x, coord_y, score)
+      node = LocationNode.new(coord_x, coord_y, score)
 
       # Then
       expect(node.prev_node).to be_nil
@@ -23,14 +23,14 @@ describe ScoreNode do
   describe '#add_after' do
 
     before(:each) do
-      @node1 = ScoreNode.new(0, 0, 12)
-      @node2 = ScoreNode.new(1, 3, 9, @node1)
+      @node1 = LocationNode.new(0, 0, 12)
+      @node2 = LocationNode.new(1, 3, 9, @node1)
       @node1.next_node = @node2
     end
 
     it 'should add the node between the one given and its next one' do
       # Given
-      new_node = ScoreNode.new(2, 1, 11)
+      new_node = LocationNode.new(2, 1, 11)
 
       # When
       new_node.add_after(@node1)
@@ -46,7 +46,7 @@ describe ScoreNode do
 
     it 'should add the node at last position if given the last node' do
       # Given
-      new_node = ScoreNode.new(2, 1, 11)
+      new_node = LocationNode.new(2, 1, 11)
 
       # When
       new_node.add_after(@node2)
@@ -63,14 +63,14 @@ describe ScoreNode do
   describe '#add_before' do
 
     before(:each) do
-      @node1 = ScoreNode.new(0, 0, 12)
-      @node2 = ScoreNode.new(1, 3, 9, @node1)
+      @node1 = LocationNode.new(0, 0, 12)
+      @node2 = LocationNode.new(1, 3, 9, @node1)
       @node1.next_node = @node2
     end
 
     it 'should add the node at first position if given a root node' do
       # Given
-      new_node = ScoreNode.new(2, 1, 11)
+      new_node = LocationNode.new(2, 1, 11)
 
       # When
       new_node.add_before(@node1)

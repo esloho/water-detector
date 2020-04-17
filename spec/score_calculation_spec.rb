@@ -1,7 +1,6 @@
 require 'score_calculation'
 
-describe  'ScoreCalculation' do
-  include ScoreCalculation
+describe ScoreCalculation do
 
   describe '#get_limits' do
 
@@ -42,9 +41,9 @@ describe  'ScoreCalculation' do
     end
   end
 
-  describe '#calculate_score' do
+  describe '#get_area_score' do
 
-    it 'should calculate score for top-left cell' do
+    it 'should calculate area score for top-left cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -52,13 +51,13 @@ describe  'ScoreCalculation' do
       coord_y = 0
 
       # When
-      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_area_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 13
     end
 
-    it 'should calculate score for top-right cell' do
+    it 'should calculate area score for top-right cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -66,13 +65,13 @@ describe  'ScoreCalculation' do
       coord_y = 2
 
       # When
-      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_area_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 6
     end
 
-    it 'should calculate score for bottom-left cell' do
+    it 'should calculate area score for bottom-left cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -80,13 +79,13 @@ describe  'ScoreCalculation' do
       coord_y = 0
 
       # When
-      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_area_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 10
     end
 
-    it 'should calculate score for bottom-right cell' do
+    it 'should calculate area score for bottom-right cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -94,13 +93,13 @@ describe  'ScoreCalculation' do
       coord_y = 2
 
       # When
-      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_area_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 7
     end
 
-    it 'should calculate score for middle cell' do
+    it 'should calculate area score for middle cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -108,7 +107,7 @@ describe  'ScoreCalculation' do
       coord_y = 1
 
       # When
-      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_area_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 22
