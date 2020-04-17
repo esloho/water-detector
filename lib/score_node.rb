@@ -1,5 +1,7 @@
 class ScoreNode
 
+  attr_reader :coord_x
+  attr_reader :coord_y
   attr_reader :score
   attr_accessor :prev_node
   attr_accessor :next_node
@@ -12,12 +14,20 @@ class ScoreNode
     @next_node = next_node
   end
 
-  def connect_to(previous_top)
-    @prev_node = previous_top.prev_node
-    @next_node = previous_top
+  def add_after(previous_node)
+    @prev_node = previous_node
+    @next_node = previous_node.next_node
 
+    previous_node.next_node = self
+    @next_node.prev_node = self unless @next_node.nil?
+  end
+
+  def add_before(next_node)
+    @prev_node = next_node.prev_node
+    @next_node = next_node
+
+    next_node.prev_node = self
     @prev_node.next_node = self unless @prev_node.nil?
-    previous_top.prev_node = self
   end
 
   def info

@@ -20,27 +20,68 @@ describe ScoreNode do
 
   end
 
-  describe '#connect_to' do
+  describe '#add_after' do
 
-    it 'should add the node between the one given and its previous one' do
+    before(:each) do
+      @node1 = ScoreNode.new(0, 0, 12)
+      @node2 = ScoreNode.new(1, 3, 9, @node1)
+      @node1.next_node = @node2
+    end
+
+    it 'should add the node between the one given and its next one' do
       # Given
-      node1 = ScoreNode.new(0, 0, 12)
-      node2 = ScoreNode.new(1, 3, 9, node1)
-      node1.next_node = node2
-
       new_node = ScoreNode.new(2, 1, 11)
 
       # When
-      new_node.connect_to(node2)
+      new_node.add_after(@node1)
 
       # Then
-      expect(new_node.prev_node).to be == node1
-      expect(new_node.next_node).to be == node2
-      expect(node1.prev_node).to be_nil
-      expect(node1.next_node).to be == new_node
-      expect(node2.prev_node).to be == new_node
-      expect(node2.next_node).to be_nil
+      expect(new_node.prev_node).to be == @node1
+      expect(new_node.next_node).to be == @node2
+      expect(@node1.prev_node).to be_nil
+      expect(@node1.next_node).to be == new_node
+      expect(@node2.prev_node).to be == new_node
+      expect(@node2.next_node).to be_nil
+    end
+
+    it 'should add the node at last position if given the last node' do
+      # Given
+      new_node = ScoreNode.new(2, 1, 11)
+
+      # When
+      new_node.add_after(@node2)
+
+      # Then
+      expect(new_node.prev_node).to be == @node2
+      expect(new_node.next_node).to be_nil
+      expect(@node2.prev_node).to be == @node1
+      expect(@node2.next_node).to be == new_node
     end
 
   end
+
+  describe '#add_before' do
+
+    before(:each) do
+      @node1 = ScoreNode.new(0, 0, 12)
+      @node2 = ScoreNode.new(1, 3, 9, @node1)
+      @node1.next_node = @node2
+    end
+
+    it 'should add the node at first position if given a root node' do
+      # Given
+      new_node = ScoreNode.new(2, 1, 11)
+
+      # When
+      new_node.add_before(@node1)
+
+      # Then
+      expect(new_node.prev_node).to be_nil
+      expect(new_node.next_node).to be == @node1
+      expect(@node1.prev_node).to be == new_node
+      expect(@node1.next_node).to be == @node2
+    end
+
+  end
+
 end 
