@@ -44,7 +44,7 @@ describe  'ScoreCalculator' do
 
   describe '#calculate_score' do
 
-    it 'should calculate score for top-left coordinate' do
+    it 'should calculate score for top-left cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -52,13 +52,13 @@ describe  'ScoreCalculator' do
       coord_y = 0
 
       # When
-      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 13
     end
 
-    it 'should calculate score for top-right coordinate' do
+    it 'should calculate score for top-right cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -66,13 +66,13 @@ describe  'ScoreCalculator' do
       coord_y = 2
 
       # When
-      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 6
     end
 
-    it 'should calculate score for bottom-left coordinate' do
+    it 'should calculate score for bottom-left cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -80,13 +80,13 @@ describe  'ScoreCalculator' do
       coord_y = 0
 
       # When
-      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 10
     end
 
-    it 'should calculate score for bottom-right coordinate' do
+    it 'should calculate score for bottom-right cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -94,13 +94,13 @@ describe  'ScoreCalculator' do
       coord_y = 2
 
       # When
-      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 7
     end
 
-    it 'should calculate score for middle coordinate' do
+    it 'should calculate score for middle cell' do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
@@ -108,7 +108,7 @@ describe  'ScoreCalculator' do
       coord_y = 1
 
       # When
-      score = ScoreCalculator.calculate_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 22
