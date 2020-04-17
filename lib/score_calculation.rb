@@ -1,4 +1,4 @@
-module ScoreCalculator
+module ScoreCalculation
   extend self
 
   def get_cell_score(coord_x, coord_y, n, grid)

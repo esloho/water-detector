@@ -1,7 +1,7 @@
-require 'score_calculator'
+require 'score_calculation'
 
-describe  'ScoreCalculator' do
-  include ScoreCalculator
+describe  'ScoreCalculation' do
+  include ScoreCalculation
 
   describe '#get_limits' do
 
@@ -11,10 +11,10 @@ describe  'ScoreCalculator' do
       x = 0
 
       # When
-      limits = ScoreCalculator.get_limits(x, n)
+      limits = ScoreCalculation.get_limits(x, n)
 
       # Then
-      expect(limits).to eq([0, 1])
+      expect(limits).to be == [0, 1]
     end
 
     it 'should return [x-1, n] for coordinate at the end' do
@@ -23,10 +23,10 @@ describe  'ScoreCalculator' do
       x = 2
 
       # When
-      limits = ScoreCalculator.get_limits(x, n)
+      limits = ScoreCalculation.get_limits(x, n)
 
       # Then
-      expect(limits).to eq([1, 3])
+      expect(limits).to be == [1, 3]
     end
 
     it 'should return [x-1, x+1] for middle coordinate' do
@@ -35,7 +35,7 @@ describe  'ScoreCalculator' do
       x = 2
 
       # When
-      limits = ScoreCalculator.get_limits(x, n)
+      limits = ScoreCalculation.get_limits(x, n)
 
       # Then
       expect(limits).to be == [1, 3]
@@ -52,7 +52,7 @@ describe  'ScoreCalculator' do
       coord_y = 0
 
       # When
-      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 13
@@ -66,7 +66,7 @@ describe  'ScoreCalculator' do
       coord_y = 2
 
       # When
-      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 6
@@ -80,7 +80,7 @@ describe  'ScoreCalculator' do
       coord_y = 0
 
       # When
-      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 10
@@ -94,7 +94,7 @@ describe  'ScoreCalculator' do
       coord_y = 2
 
       # When
-      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 7
@@ -108,7 +108,7 @@ describe  'ScoreCalculator' do
       coord_y = 1
 
       # When
-      score = ScoreCalculator.get_cell_score(coord_x, coord_y, n, grid)
+      score = ScoreCalculation.get_cell_score(coord_x, coord_y, n, grid)
 
       # Then
       expect(score).to be == 22

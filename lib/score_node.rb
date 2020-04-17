@@ -12,7 +12,16 @@ class ScoreNode
     @next_node = next_node
   end
 
+  def connect_to(previous_top)
+    @prev_node = previous_top.prev_node
+    @next_node = previous_top
+
+    @prev_node.next_node = self unless @prev_node.nil?
+    previous_top.prev_node = self
+  end
+
   def info
     "(#{@coord_x}, #{@coord_y}, score: #{@score})"
   end
+
 end
