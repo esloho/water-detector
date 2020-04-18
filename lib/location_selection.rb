@@ -4,6 +4,11 @@ require_relative 'location_sorting'
 module LocationSelection
   extend self
 
+  def find_top_locations(t, n, grid)
+    sorted_scores = get_sorted_area_scores(n, grid)
+    print_top_locations(t, sorted_scores)
+  end
+
   def get_sorted_area_scores(n, grid)
     last_pos = n - 1
     sorted_locations = nil
