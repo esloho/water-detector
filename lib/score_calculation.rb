@@ -2,13 +2,13 @@ module ScoreCalculation
   extend self
 
   def get_area_score(coord_x, coord_y, n, grid)
-    limits_x = get_limits(coord_x, n)
-    limits_y = get_limits(coord_y, n)
+    starting_x, ending_x = get_limits(coord_x, n)
+    starting_y, ending_y = get_limits(coord_y, n)
 
     score = 0
 
-    limits_x[0].upto(limits_x[1]) do |i|
-      limits_y[0].upto(limits_y[1]) do |j|
+    starting_x.upto(ending_x) do |i|
+      starting_y.upto(ending_y) do |j|
         score += get_measurement(i, j, n, grid)
       end
     end
