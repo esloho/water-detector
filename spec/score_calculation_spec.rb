@@ -1,4 +1,4 @@
-require 'score_calculation'
+require_relative '../lib/score_calculation'
 
 describe ScoreCalculation do
 

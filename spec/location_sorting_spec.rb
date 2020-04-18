@@ -1,4 +1,4 @@
-require 'location_sorting'
+require_relative '../lib/location_sorting'
 
 describe LocationSorting do
 

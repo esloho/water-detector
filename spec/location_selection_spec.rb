@@ -1,4 +1,4 @@
-require 'location_selection'
+require_relative '../lib/location_selection'
 
 describe LocationSelection do
 
