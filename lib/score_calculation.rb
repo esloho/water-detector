@@ -26,6 +26,6 @@ module ScoreCalculation
   end
 
   def get_measurement(i, j, n, grid)
-    grid[i*n + j]
+    grid[j*n + i]
   end
   end

@@ -24,8 +24,8 @@ describe LocationSelection do
 
       third_location = second_location.next_node
       expect(third_location.score).to be == 20
-      expect(third_location.coord_x).to be == 1
-      expect(third_location.coord_y).to be == 2
+      expect(third_location.coord_x).to be == 2
+      expect(third_location.coord_y).to be == 1
     end
 
   end

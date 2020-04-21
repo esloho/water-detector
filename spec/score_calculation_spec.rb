@@ -61,8 +61,8 @@ describe ScoreCalculation do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
-      coord_x = 0
-      coord_y = 2
+      coord_x = 2
+      coord_y = 0
 
       # When
       score = ScoreCalculation.get_area_score(coord_x, coord_y, n, grid)
@@ -75,8 +75,8 @@ describe ScoreCalculation do
       # Given
       grid = [5, 3, 1, 4, 1, 1, 2, 3, 2]
       n = 3
-      coord_x = 2
-      coord_y = 0
+      coord_x = 0
+      coord_y = 2
 
       # When
       score = ScoreCalculation.get_area_score(coord_x, coord_y, n, grid)
