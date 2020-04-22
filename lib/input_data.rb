@@ -20,7 +20,7 @@ module InputData
 
     return input_grid.split(' ') if input_grid.include?(' ')
 
-    raise 'Error: input grid numbers can only be delimited by spaces or commas'
+    raise 'Error: grid numbers can only be delimited by spaces or commas'
   end
 
   def validate(t, n, grid)

@@ -10,7 +10,7 @@ describe LocationSelection do
       n = 4
 
       # When
-      scores_grid, ignore_sorted_list = LocationSelection.get_sorted_area_scores(n, grid)
+      scores_grid, _ = LocationSelection.get_sorted_area_scores(n, grid)
 
       # Then
       expect(scores_grid.length).to be == grid.length
@@ -25,7 +25,7 @@ describe LocationSelection do
       n = 4
 
       # When
-      ignore_scores_grid, first_location = LocationSelection.get_sorted_area_scores(n, grid)
+      _, first_location = LocationSelection.get_sorted_area_scores(n, grid)
 
       # Then
       expect(first_location.score).to be == 22
@@ -45,7 +45,7 @@ describe LocationSelection do
 
   end
 
-  describe '#print_top_results' do
+  describe '#get_top_locations_info' do
 
     before(:each) do
       @top_location = LocationNode.new(0, 0, 12)
@@ -55,38 +55,48 @@ describe LocationSelection do
       @node2.next_node = @node3
     end
 
-    it 'should not print anything for t = 0' do
+    it 'should not generate anything for t = 0' do
       # Given
       t = 0
 
+      # When
+      messages = LocationSelection.get_top_locations_info([], t, @top_location)
+
       # Then
-      expect { LocationSelection.print_top_locations(t, @top_location) }.to_not output.to_stdout
+      expect(messages).to be_empty
     end
 
-    it 'should not print anything if empty list' do
+    it 'should not generate anything if empty list' do
       # Given
       t = 3
 
+      # When
+      messages = LocationSelection.get_top_locations_info([], t, nil)
+
       # Then
-      expect { LocationSelection.print_top_locations(t, nil) }.to_not output.to_stdout
+      expect(messages).to be_empty
     end
 
-    it 'should print first result for t==1' do
+    it 'should generate message for first result when t==1' do
       # Given
       t = 2
-      message = "(0, 0, score: 12)\n(1, 3, score: 9)\n"
+
+      # When
+      messages = LocationSelection.get_top_locations_info([], t, @top_location)
 
       # Then
-      expect { LocationSelection.print_top_locations(t, @top_location) }.to output(message).to_stdout
+      expect(messages).to be == ["(0, 0, score: 12)", "(1, 3, score: 9)"]
     end
 
-    it 'should print until last location when t is higher than list length' do
+    it 'should generate messages until last location when t is higher than list length' do
       # Given
       t = 4
-      message = "(0, 0, score: 12)\n(1, 3, score: 9)\n(2, 0, score: 7)\n"
+
+      # When
+      messages = LocationSelection.get_top_locations_info([], t, @top_location)
 
       # Then
-      expect { LocationSelection.print_top_locations(t, @top_location) }.to output(message).to_stdout
+      expect(messages).to be == ["(0, 0, score: 12)", "(1, 3, score: 9)", "(2, 0, score: 7)"]
     end
   end
 end 

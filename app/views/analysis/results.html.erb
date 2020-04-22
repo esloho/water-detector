@@ -1,17 +1,17 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
-<%= javascript_include_tag 'heatmap' %>
+<%= javascript_include_tag "heatmap" %>
 
-<%= partial 'analysis/header' %>
-<%= partial 'analysis/form' %>
+<%= partial "analysis/header" %>
+<%= partial "analysis/form" %>
 <br>
 
 <% if @data %>
-  <div id='results'>
+  <div id="results">
     <h2>Results</h2>
 
-    <div id='graphics'>
+    <div id="graphics">
       <h3>Interactive heatmap of area scores:</h3>
-      <div id='heatmap' style="width:600px; height:600px;"></div>
+      <div id="heatmap" style="width:600px; height:600px;"></div>
 
       <script type="text/javascript">
           var size = '<%= @size %>'
@@ -21,9 +21,12 @@
       </script>
     </div>
 
-    <% if @top_results %>
-      <div id='top-results'>
+    <% if @top_locations %>
+      <div id="top-locations">
         <h3>Highest rated locations and their respective scores:</h3>
+        <% @top_locations.each do | message |  %>
+          <p class="location-message"><%= message %></p>
+        <% end %>
       </div>
     <% end %>
   </div>

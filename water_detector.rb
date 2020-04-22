@@ -10,6 +10,12 @@ def print_help
   puts "\n***************************************************\n"
 end
 
+def print_locations(locations)
+  locations.each do | message |
+    puts message
+  end
+end
+
 def main
   begin
     input_t, input_n, *input_grid = ARGV
@@ -17,7 +23,9 @@ def main
 
     return puts "No results requested" if t == 0
 
-    LocationSelection.find_top_locations(t, n, grid)
+    _, top_locations = LocationSelection.analyze_locations(t, n, grid)
+    print_locations(top_locations)
+
   rescue Exception => e
     puts "#{e}"
     print_help

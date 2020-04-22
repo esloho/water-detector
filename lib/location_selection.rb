@@ -4,17 +4,11 @@ require_relative 'location_sorting'
 module LocationSelection
   extend self
 
-  def find_top_locations(t, n, grid)
+  def analyze_locations(t, n, grid)
     scores_grid, sorted_scores = get_sorted_area_scores(n, grid)
-    print_top_locations(t, sorted_scores)
+    top_locations = get_top_locations_info([], t, sorted_scores)
 
-    scores_grid
-  end
-
-  def get_heatmap_data(n, grid)
-    scores_grid, ignore_sorted_list = get_sorted_area_scores(n, grid)
-
-    scores_grid
+    [scores_grid, top_locations]
   end
 
   def get_sorted_area_scores(n, grid)
@@ -33,12 +27,12 @@ module LocationSelection
     [scores_grid, sorted_locations]
   end
 
-  def print_top_locations(t, location)
-    return if t == 0 || location.nil?
+  def get_top_locations_info(messages, t, location)
+    return messages if t == 0 || location.nil?
 
-    puts "#{location.info}"
+    messages.push("#{location.info}")
 
-    print_top_locations(t-1, location.next_node)
+    get_top_locations_info(messages, t-1, location.next_node)
   end
 
 end

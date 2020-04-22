@@ -11,7 +11,7 @@ WaterDetector::App.controllers :analysis do
       t = params[:t] || 0
       @number_results, @size, grid = InputData.parse(t, params[:n], params[:grid])
 
-      @data = LocationSelection.get_heatmap_data(@size, grid)
+      @data, @top_locations = LocationSelection.analyze_locations(@number_results, @size, grid)
 
       render 'analysis/results'
 

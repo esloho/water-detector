@@ -42,7 +42,7 @@ describe InputData do
       input_grid = '1-2-3-4-5'
 
       # Then
-      expect { InputData.convert_to_array(input_grid) }.to raise_error(message='Error: input grid numbers can only be delimited by spaces or commas')
+      expect { InputData.convert_to_array(input_grid) }.to raise_error(message='Error: grid numbers can only be delimited by spaces or commas')
     end
 
   end
