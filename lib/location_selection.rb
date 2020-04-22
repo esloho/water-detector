@@ -12,9 +12,9 @@ module LocationSelection
   end
 
   def get_heatmap_data(n, grid)
-    scores_grid, top_location = get_sorted_area_scores(n, grid)
+    scores_grid, ignore_sorted_list = get_sorted_area_scores(n, grid)
 
-    [scores_grid, top_location.score]
+    scores_grid
   end
 
   def get_sorted_area_scores(n, grid)

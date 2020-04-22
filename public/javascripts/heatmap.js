@@ -1,5 +1,5 @@
 
-function displayHeatmap(size, maxScore, data) {
+function displayHeatmap(size, data) {
 
     var axis = Array.from(Array(size).keys());
 
@@ -39,7 +39,7 @@ function displayHeatmap(size, maxScore, data) {
         },
         visualMap: {
             min: 0,
-            max: maxScore,
+            max: 81,
             calculable: true,
             orient: 'horizontal',
             left: 'center',
