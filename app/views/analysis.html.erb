@@ -1,0 +1,16 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
+<%= javascript_include_tag 'heatmap' %>
+
+<h1>Analysis of raw measurements</h1>
+
+<p>Description of this page</p>
+
+<div id='heatmap' style="width:600px; height:600px;"></div>
+
+<script type="text/javascript">
+    var size = '<%= @size %>'
+    var data = JSON.parse('<%= @data %>');
+    var maxScore = parseInt('<%= @max_score %>');
+
+    displayHeatmap(size, maxScore, data);
+</script>
