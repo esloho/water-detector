@@ -4,13 +4,28 @@ describe LocationSelection do
 
   describe '#get_sorted_area_scores' do
 
+    it 'should return scores grid' do
+      # Given
+      grid = [5, 3, 1, 2, 4, 1, 1, 3, 2, 3, 2, 4, 0, 2, 3, 3]
+      n = 4
+
+      # When
+      scores_grid, ignore_sorted_list = LocationSelection.get_sorted_area_scores(n, grid)
+
+      # Then
+      expect(scores_grid.length).to be == grid.length
+      expect(scores_grid[0]).to be == [0, 0, 13]
+      expect(scores_grid[1]).to be == [0, 1, 18]
+      expect(scores_grid[4]).to be == [1, 0, 15]
+    end
+
     it 'should return sorted linked list of location' do
       # Given
       grid = [5, 3, 1, 2, 4, 1, 1, 3, 2, 3, 2, 4, 0, 2, 3, 3]
       n = 4
 
       # When
-      first_location = LocationSelection.get_sorted_area_scores(n, grid)
+      ignore_scores_grid, first_location = LocationSelection.get_sorted_area_scores(n, grid)
 
       # Then
       expect(first_location.score).to be == 22
