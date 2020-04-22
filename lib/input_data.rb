@@ -1,30 +1,24 @@
 module InputData
   extend self
 
-  def read_input
-    begin
-      input_t, input_n, *input_grid = ARGV
-      t = input_t.to_i
-      n = input_n.to_i
-      grid = input_grid.map(&:to_i)
+  def transform(input_t, input_n, input_grid)
+    t = input_t.to_i
+    n = input_n.to_i
 
-      validate(t, n, grid)
+    input_grid = convert_to_array(input_grid) unless input_grid.is_a?(Array)
+    grid = input_grid.map(&:to_i)
 
-      [t, n, grid]
+    validate(t, n, grid)
 
-    rescue Exception => e
-      puts "#{e}"
-      print_help
-      exit
-    end
+    [t, n, grid]
   end
 
-  def print_help
-    puts "\n**** Water detection in Mars program ****"
-    puts "COMMAND: water_detector t n grid"
-    puts "t = number of results requested"
-    puts "n = size of the grid"
-    puts "grid = space delimited list of numbers that form the grid"
+  def convert_to_array(input_grid)
+    return input_grid.split(' ') if input_grid.include?(' ')
+
+    return input_grid.split(',') if input_grid.include?(',')
+
+    raise 'Error: input grid numbers can only be delimited by spaces or commas'
   end
 
   def validate(t, n, grid)
