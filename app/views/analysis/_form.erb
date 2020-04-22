@@ -3,6 +3,10 @@
   <h2>Data recollection</h2>
   <p>Please fill up the following form with the Curiosity's measurements to find concentrated areas of water presence. </p>
 
+  <% if @error %>
+    <div class='error-message'><%= @error %></div>
+  <% end %>
+
   <% form_tag '/analysis', :class => 'measurements-form' do %>
     <% field_set_tag do %>
       <p>
