@@ -5,11 +5,17 @@
 
 <p>Description of this page</p>
 
-<div id='heatmap' style="width:600px; height:600px;"></div>
+<%= partial 'form' %>
 
-<script type="text/javascript">
-    var size = '<%= @size %>'
-    var data = JSON.parse('<%= @data %>');
+<% if @data %>
 
-    displayHeatmap(size, data);
-</script>
+  <div id='heatmap' style="width:600px; height:600px;"></div>
+
+  <script type="text/javascript">
+      var size = '<%= @size %>'
+      var data = JSON.parse('<%= @data %>');
+
+      displayHeatmap(size, data);
+  </script>
+
+<% end %>
