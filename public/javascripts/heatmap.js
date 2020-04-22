@@ -15,7 +15,7 @@ function displayHeatmap(size, data) {
         animation: false,
         grid: {
             height: '50%',
-            top: '20%',
+            top: '10%',
             left: '20%'
         },
         xAxis: {
@@ -43,7 +43,7 @@ function displayHeatmap(size, data) {
             calculable: true,
             orient: 'horizontal',
             left: 'center',
-            bottom: '5%'
+            bottom: '15%'
         },
         series: [{
             name: 'Area score',

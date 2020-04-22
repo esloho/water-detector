@@ -3,14 +3,15 @@ require_relative '../../lib/location_selection'
 WaterDetector::App.controllers :analysis do
 
   get :index do
-    render 'analysis'
+    render 'analysis/index'
   end
 
   post :index do
-    @number_results, @size, grid = InputData.transform(params[:t], params[:n], params[:grid])
+    t = params[:t] || 0
+    @number_results, @size, grid = InputData.parse(t, params[:n], params[:grid])
 
     @data = LocationSelection.get_heatmap_data(@size, grid)
 
-    render 'analysis'
+    render 'analysis/results'
   end
 end

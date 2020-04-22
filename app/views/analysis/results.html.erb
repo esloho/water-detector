@@ -1,0 +1,30 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
+<%= javascript_include_tag 'heatmap' %>
+
+<%= partial 'analysis/header' %>
+<%= partial 'analysis/form' %>
+<br>
+
+<% if @data %>
+  <div id='results'>
+    <h2>Results</h2>
+
+    <div id='graphics'>
+      <h3>Interactive heatmap of area scores:</h3>
+      <div id='heatmap' style="width:600px; height:600px;"></div>
+
+      <script type="text/javascript">
+          var size = '<%= @size %>'
+          var data = JSON.parse('<%= @data %>');
+
+          displayHeatmap(size, data);
+      </script>
+    </div>
+
+    <% if @top_results %>
+      <div id='top-results'>
+        <h3>Highest rated locations and their respective scores:</h3>
+      </div>
+    <% end %>
+  </div>
+<% end %>
