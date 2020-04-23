@@ -1,10 +1,10 @@
 require_relative 'score_calculation'
-require_relative 'location_sorting'
+require_relative '../location/sorting'
 
-module LocationSelection
+module SoilAnalyzer
   extend self
 
-  def analyze_locations(t, n, grid)
+  def get_water_concentration(t, n, grid)
     scores_grid, sorted_scores = get_sorted_area_scores(n, grid)
     top_locations = get_top_locations_info([], t, sorted_scores)
 

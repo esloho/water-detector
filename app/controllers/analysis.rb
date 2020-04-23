@@ -1,4 +1,4 @@
-require_relative '../../lib/location_selection'
+require_relative '../../lib/analysis/soil_analyzer'
 
 WaterDetector::App.controllers :analysis do
 
@@ -11,7 +11,7 @@ WaterDetector::App.controllers :analysis do
       t = params[:t] || 0
       @number_results, @size, grid = InputData.parse(t, params[:n], params[:grid])
 
-      @data, @top_locations = LocationSelection.analyze_locations(@number_results, @size, grid)
+      @data, @top_locations = SoilAnalyzer.get_water_concentration(@number_results, @size, grid)
 
       render 'analysis/results'
 

@@ -1,5 +1,5 @@
-require_relative 'lib/input_data'
-require_relative 'lib/location_selection'
+require_relative 'lib/input/input_data'
+require_relative 'lib/analysis/soil_analyzer'
 
 def print_help
   puts "\n********* Water detection in Mars program *********\n\n"
@@ -23,7 +23,7 @@ def main
 
     return puts "No results requested" if t == 0
 
-    _, top_locations = LocationSelection.analyze_locations(t, n, grid)
+    _, top_locations = SoilAnalyzer.get_water_concentration(t, n, grid)
     print_locations(top_locations)
 
   rescue Exception => e

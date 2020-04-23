@@ -1,4 +1,4 @@
-require_relative '../lib/location_node'
+require_relative '../../../lib/location/node'
 
 describe LocationNode do
 

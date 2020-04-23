@@ -1,4 +1,4 @@
-require_relative 'location_node'
+require_relative 'node'
 
 module LocationSorting
   extend self

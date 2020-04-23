@@ -1,4 +1,4 @@
-require_relative '../lib/input_data'
+require_relative '../../../lib/input/input_data'
 
 describe InputData do
 

@@ -1,6 +1,6 @@
-require_relative '../lib/location_selection'
+require_relative '../../../lib/analysis/soil_analyzer'
 
-describe LocationSelection do
+describe SoilAnalyzer do
 
   describe '#get_sorted_area_scores' do
 
@@ -10,7 +10,7 @@ describe LocationSelection do
       n = 4
 
       # When
-      scores_grid, _ = LocationSelection.get_sorted_area_scores(n, grid)
+      scores_grid, _ = SoilAnalyzer.get_sorted_area_scores(n, grid)
 
       # Then
       expect(scores_grid.length).to be == grid.length
@@ -25,7 +25,7 @@ describe LocationSelection do
       n = 4
 
       # When
-      _, first_location = LocationSelection.get_sorted_area_scores(n, grid)
+      _, first_location = SoilAnalyzer.get_sorted_area_scores(n, grid)
 
       # Then
       expect(first_location.score).to be == 22
@@ -60,7 +60,7 @@ describe LocationSelection do
       t = 0
 
       # When
-      messages = LocationSelection.get_top_locations_info([], t, @top_location)
+      messages = SoilAnalyzer.get_top_locations_info([], t, @top_location)
 
       # Then
       expect(messages).to be_empty
@@ -71,7 +71,7 @@ describe LocationSelection do
       t = 3
 
       # When
-      messages = LocationSelection.get_top_locations_info([], t, nil)
+      messages = SoilAnalyzer.get_top_locations_info([], t, nil)
 
       # Then
       expect(messages).to be_empty
@@ -82,7 +82,7 @@ describe LocationSelection do
       t = 2
 
       # When
-      messages = LocationSelection.get_top_locations_info([], t, @top_location)
+      messages = SoilAnalyzer.get_top_locations_info([], t, @top_location)
 
       # Then
       expect(messages).to be == ["(0, 0, score: 12)", "(1, 3, score: 9)"]
@@ -93,7 +93,7 @@ describe LocationSelection do
       t = 4
 
       # When
-      messages = LocationSelection.get_top_locations_info([], t, @top_location)
+      messages = SoilAnalyzer.get_top_locations_info([], t, @top_location)
 
       # Then
       expect(messages).to be == ["(0, 0, score: 12)", "(1, 3, score: 9)", "(2, 0, score: 7)"]

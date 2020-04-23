@@ -33,7 +33,7 @@ where:
 
 ### As web app
 
-To run as web app you need to have installed padrino (see requirements), a lightweight alternative to Rails. 
+To run as web app you need to have installed [padrino](http://padrinorb.com/) (see requirements), a lightweight alternative to Rails. 
 
 Once installed, you need to start the server from the project folder with:
 
@@ -44,6 +44,6 @@ You can then access the web app at http://localhost:3000
 
 ## Test
 
-All tests can be executed at once by running:
+All tests can be executed at once by running from within the project folder:
 
     $ rspec
