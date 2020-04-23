@@ -1,5 +1,35 @@
+#measurements-form {
+    width: 50%;
+    margin: auto;
+}
+
+.sketch-orange {
+    color: #fff !important;
+    background-color: rgb(250, 100, 0);
+}
+
+.sketch-button {
+    color: #fff !important;
+    background-color: rgb(250, 100, 0);
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.sketch-button:hover {
+    color: #fff !important;
+    background-color: #fb8332 !important;
+}
+
+
 .error-message {
     color: red;
     font-size: small;
 }
 
+h2 {
+    color: rgb(250, 100, 0);
+}
+
+fieldset {
+    border:0px;
+}

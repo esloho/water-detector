@@ -3,7 +3,7 @@ require_relative '../../lib/analysis/soil_analyzer'
 WaterDetector::App.controllers :analysis do
 
   get :index do
-    render 'analysis/index'
+    render 'analysis/_form', :layout => 'application', :locals => { :title => "Soil Analysis" }
   end
 
   post :index do
@@ -13,11 +13,11 @@ WaterDetector::App.controllers :analysis do
 
       @data, @top_locations = SoilAnalyzer.get_water_concentration(@number_results, @size, grid)
 
-      render 'analysis/results'
+      render 'analysis/results', :layout => 'application', :locals => { :title => "Soil Analysis" }
 
     rescue Exception => e
       @error = e
-      render 'analysis/index'
+      render 'analysis/_form', :layout => 'application', :locals => { :title => "Soil Analysis" }
     end
   end
 end

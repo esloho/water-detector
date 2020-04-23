@@ -1,17 +1,15 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.min.js"></script>
 <%= javascript_include_tag "heatmap" %>
 
-<%= partial "analysis/header" %>
 <%= partial "analysis/form" %>
-<br>
 
 <% if @data %>
-  <div id="results">
-    <h2>Results</h2>
+  <div class="w3-row-padding w3-padding-32" id="results">
+    <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Results</h2>
 
-    <div id="graphics">
-      <h3>Interactive heatmap of area scores:</h3>
-      <div id="heatmap" style="width:600px; height:600px;"></div>
+    <div class="w3-half w3-center w3-margin-bottom w3-padding-16" id="graphics">
+      <h3>Interactive heatmap of area scores</h3>
+      <div class="w3-padding-16" id="heatmap" style="width:600px; height:600px; margin: 0 auto"></div>
 
       <script type="text/javascript">
           var size = '<%= @size %>'
@@ -22,11 +20,13 @@
     </div>
 
     <% if @top_locations %>
-      <div id="top-locations">
-        <h3>Highest rated locations and their respective scores:</h3>
-        <% @top_locations.each do | message |  %>
-          <p class="location-message"><%= message %></p>
-        <% end %>
+      <div class="w3-half w3-center w3-margin-bottom w3-padding-16" id="top-locations">
+        <h3>Highest rated locations and their respective scores</h3>
+        <div class="w3-padding-16">
+          <% @top_locations.each do | message |  %>
+            <h4 class="location-message"><%= message %></h4>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

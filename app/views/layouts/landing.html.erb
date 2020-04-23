@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<title>Water Detection</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<%= stylesheet_link_tag "application" %>
+
+<body>
+
+  <%= partial "layouts/navbar" %>
+
+  <!-- Header -->
+  <header class="w3-container w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Water Detection in Mars</h1>
+    <p class="w3-xlarge w3-text-black">A NASA's project</p>
+    <%= link_to "Get Started", "/analysis", :class => "w3-btn w3-round w3-padding-large w3-large w3-margin-top sketch-button" %>
+  </header>
+
+  <!-- Image Header -->
+  <div class="w3-display-container w3-animate-opacity">
+    <%= image_tag "mars.jpg", :style => "width:100%;min-height:350px;max-height:600px;" %>
+  </div>
+
+  <%= yield %>
+
+</body>

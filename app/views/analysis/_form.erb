@@ -1,28 +1,29 @@
-<div id="data-recollection">
+<div class="w3-container">
+  <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Data Recollection</h2>
 
-  <h2>Data recollection</h2>
-  <p>Please fill up the following form with the Curiosity's measurements to find concentrated areas of water presence. </p>
-
-  <% form_tag "/analysis", :class => "measurements-form" do %>
-    <% field_set_tag do %>
-      <p>
-        <%= label_tag :results %>
-        <%= text_field_tag :t, :placeholder => "Number of top results to be listed" %>
-      </p>
-      <p>
-        <%= label_tag :size, :caption => "* Size:" %>
-        <%= text_field_tag :n, :required => true, :placeholder => "Size of the grid" %>
-      </p>
-      <p>
-        <%= label_tag :grid, :caption => "* Grid:" %>
-        <%= text_field_tag :grid, :required => true, :placeholder => "Space delimited list of numbers" %>
-      </p>
-      <%= submit_tag :class => "submit-button" %>
+  <div class="w3-container" id="measurements-form">
+    <p>Please fill up the following form with Curiosity's measurements to find concentrated areas of water presence. </p>
+    <% form_tag "/analysis", :class => "w3-card w3-padding-16 w3-white" do %>
+      <% field_set_tag do %>
+        <div class="w3-section">
+          <%= label_tag :results, :caption => "Results" %>
+          <%= text_field_tag :t, :placeholder => "Number of highest results to be listed" , :class => "w3-input"%>
+        </div>
+        <div class="w3-section">
+          <%= label_tag :size, :caption => "Size *" %>
+          <%= text_field_tag :n, :required => true, :placeholder => "Size of the grid", :class => "w3-input" %>
+        </div>
+        <div class="w3-section">
+          <%= label_tag :grid, :caption => "Grid *" %>
+          <%= text_field_tag :grid, :required => true, :placeholder => "Space delimited list of numbers", :class => "w3-input" %>
+        </div>
+        <%= submit_tag :class => "w3-btn w3-round w3-right sketch-button" %>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <% if @error %>
-    <div class="error-message"><%= @error %></div>
-  <% end %>
+    <% if @error %>
+      <div class="w3-container w3-padding-16 error-message"><%= @error %></div>
+    <% end %>
+  </div>
 
 </div>
