@@ -16,9 +16,8 @@ def print_locations(locations)
   end
 end
 
-def main
+def main(input_t, input_n, input_grid)
   begin
-    input_t, input_n, *input_grid = ARGV
     t, n, grid = InputData.parse(input_t, input_n, input_grid)
 
     return puts "No results requested" if t == 0
@@ -32,4 +31,5 @@ def main
   end
 end
 
-main
+input_t, input_n, *input_grid = ARGV
+main(input_t, input_n, input_grid)
